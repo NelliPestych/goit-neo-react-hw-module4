@@ -59,12 +59,10 @@ function App() {
         if (modalImage) {
             return;
         }
-        console.log("Opening modal with image:", image);
         setModalImage(image);
     };
 
     const closeModal = () => {
-        console.log("Closing modal and setting modalImage to null");
         setModalImage(null);
     };
 
