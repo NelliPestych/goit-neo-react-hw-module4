@@ -12,6 +12,13 @@ import './App.css';
 const API_KEY = 'usUhLQgXI4M3M-mwrzj1nXmpJuO0Yf00lZuSG3ZoYLo';
 const API_URL = 'https://api.unsplash.com/search/photos';
 
+// Запобігаємо повторному виклику setAppElement
+import Modal from 'react-modal';
+if (!Modal.__appElementSet) {
+    Modal.setAppElement('#root');
+    Modal.__appElementSet = true;
+}
+
 function App() {
     const [query, setQuery] = useState('');
     const [images, setImages] = useState([]);
@@ -52,10 +59,12 @@ function App() {
         if (modalImage) {
             return;
         }
+        console.log("Opening modal with image:", image);
         setModalImage(image);
     };
 
     const closeModal = () => {
+        console.log("Closing modal and setting modalImage to null");
         setModalImage(null);
     };
 
